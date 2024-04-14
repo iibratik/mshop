@@ -1,0 +1,18 @@
+@import "../common/varibles.scss";
+.search {
+    margin: 32px 0;
+
+    &-body{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 10px;
+        border: 1px solid grey;
+
+        #search{
+            font-family: Graphik;
+            width: 100%;
+        }
+    }
+}

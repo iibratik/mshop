@@ -1,0 +1,27 @@
+$Graphik: ("Semibold" 600, "Medium" 500, "Regular" 400);
+
+@each $name, $weight in $Graphik {
+    @font-face {
+        font-family: "Graphik";
+        src: url("@/assets/fonts/graphik/GraphikLCG-#{$name}.ttf");
+        font-weight: $weight;
+    }
+}
+$Inter: ("Medium" 500, "Regular" 400);
+
+@each $name, $weight in $Inter {
+    @font-face {
+        font-family: "Graphik";
+        src: url("@/assets/fonts/inter/Inter-#{$name}.ttf");
+        font-weight: $weight;
+    }
+}
+$TTFors: ("Medium" 500, "Regular" 400);
+
+@each $name, $weight in $TTFors {
+    @font-face {
+        font-family: "Graphik";
+        src: url("@/assets/fonts/tt_fors/TT-#{$name}.ttf");
+        font-weight: $weight;
+    }
+}

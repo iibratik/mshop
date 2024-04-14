@@ -1,0 +1,11 @@
+@import "zerostyle.scss";
+@import "fonts.scss";
+@import "varibles.scss";
+.container {
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.title {
+    font-family: Graphik;
+    font-weight: 600;
+}

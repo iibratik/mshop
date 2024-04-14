@@ -1,0 +1,35 @@
+.navbar {
+    &-content {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &-right {
+        display: flex;
+        gap: 8px;
+    }
+    &__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        i{
+            font-size: 20px;
+        }
+        &:nth-child(1) {
+            i {
+                color: var(--red);
+            }
+        }
+        &:nth-child(3) {
+            i{
+                color: var(--grey);
+            }
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
+}
