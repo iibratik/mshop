@@ -1,8 +1,9 @@
 <template>
-  <v-app id="app">
+  <VApp id="app">
     <Navigation />
     <router-view />
-  </v-app>
+    <Footer />
+  </VApp>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-light">
+  <nav class="navbar navbar-light mb-6">
     <div class="container">
       <router-link to="/" class="navbar-brand">
         <img src="@/assets/svg/logo.svg" alt="logo image" />
