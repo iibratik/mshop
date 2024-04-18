@@ -1,24 +1,43 @@
-.products{
-    &-content{
+.products {
+    &-content {
         margin-bottom: 32px;
         display: grid;
         grid-template-columns: repeat(2, 165px);
         justify-content: center;
         gap: 15px;
     }
-    & .product-card{
+    & .product-card {
         display: flex;
         flex-direction: column;
         align-items: stretch;
-
-        &__bottom{
+        position: relative;
+        .heart {
+            font-size: 24px;
+            color: red;
+            transition: all 0.001ms ease-in-out;
+        }
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: all 0.001ms;
+        }
+        .fade-enter, .fade-leave-to /* .fade-leave-active в версиях до 2.1.8 */ {
+            opacity: 0;
+        }
+        & .icon {
+            position: absolute;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            top: 10px;
+        }
+        &__bottom {
             margin-top: 12px;
-            & h3{
+            & h3 {
                 font-weight: 600;
                 margin-bottom: 4px;
             }
-            & span{
-                color: #0B3F6F;
+            & span {
+                color: #0b3f6f;
                 font-weight: 600;
             }
         }

@@ -28,10 +28,7 @@
         <button
           class="navbar-toggler navbar__button rounded-border"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
+
           aria-label="Toggle navigation"
         >
           <i class="fa-solid fa-bars"></i>
