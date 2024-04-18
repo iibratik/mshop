@@ -6,7 +6,7 @@
     }
     & .categories-body {
         display: grid;
-        grid-template-columns: repeat(3, 27.5%);
+        grid-template-columns: repeat(3, 30%);
         justify-content: center;
         gap: 10px;
         margin-bottom: 32px;
@@ -23,7 +23,7 @@
         padding: 12px 20px;
         & .card-title {
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             line-height: 167%;
             color: #000;
         }

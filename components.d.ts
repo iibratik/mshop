@@ -11,13 +11,17 @@ declare module 'vue' {
     BlueBtn: typeof import('./src/components/common/BlueBtn.vue')['default']
     Categories: typeof import('./src/components/Categories.vue')['default']
     Footer: typeof import('./src/components/layouts/Footer.vue')['default']
+    Header: typeof import('./src/components/Navigation/Header.vue')['default']
     Logo: typeof import('./src/components/Logo.vue')['default']
     MainSlider: typeof import('./src/components/MainSlider.vue')['default']
     Navigation: typeof import('./src/components/Navigation/navigation.vue')['default']
+    NavigationSidebar: typeof import('./src/components/Navigation/navigationSidebar.vue')['default']
     ProductCard: typeof import('./src/components/ProductCard.vue')['default']
     ProductCards: typeof import('./src/components/ProductCards.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Searchinput: typeof import('./src/components/Searchinput.vue')['default']
+    SecondaryBlueBtn: typeof import('./src/components/common/SecondaryBlueBtn.vue')['default']
+    SidebarListItem: typeof import('./src/components/common/SidebarListItem.vue')['default']
   }
 }

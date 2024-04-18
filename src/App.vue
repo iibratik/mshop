@@ -1,16 +1,26 @@
 <template>
-  <VApp id="app">
-    <Navigation />
-    <router-view />
+  <v-app id="app">
+    <Header @sendSidebarStatus="setSidebarStatus" />
+    <router-view v-if="!sidebarStatus" />
     <Footer />
-  </VApp>
+  </v-app>
 </template>
 
 <script>
-import Navigation from "./components/Navigation/navigation.vue";
+import Header from "./components/Navigation/Header.vue";
 export default {
+  data() {
+    return {
+      sidebarStatus: false,
+    };
+  },
   components: {
-    Navigation,
+    Header,
+  },
+  methods: {
+    setSidebarStatus(status) {
+      this.sidebarStatus = status;
+    },
   },
 };
 </script>

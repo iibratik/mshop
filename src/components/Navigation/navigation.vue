@@ -28,8 +28,8 @@
         <button
           class="navbar-toggler navbar__button rounded-border"
           type="button"
-
           aria-label="Toggle navigation"
+          @click="sendNavSidebarStatus"
         >
           <i class="fa-solid fa-bars"></i>
         </button>
@@ -39,7 +39,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  
+  methods:{
+    sendNavSidebarStatus(){
+      this.$emit("active-nav-sidebar", true)
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped></style>
