@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      navSidebarStatus: true,
+      navSidebarStatus: false,
     };
   },
   methods: {

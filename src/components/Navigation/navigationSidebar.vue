@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar-sidebar">
+  <div class="navbar-sidebar" :class="promostatus ? 'hide-sidebar-height' : ''">
     <div class="sidebar-content container">
       <div class="sidebar-header">
         <nav class="navbar navbar-light mb-6 sidebar-nav">
@@ -52,7 +52,12 @@
             </div>
             <span class="balance-count"> {{ balance }}₽ </span>
           </div>
-          <SidebarListItem style="margin-top: 12px" color="#e62e05">
+          <SidebarListItem
+            @click="promoactiveDialog = !promoactiveDialog"
+            v-bind="activatorProps"
+            style="margin-top: 12px"
+            color="#e62e05"
+          >
             <template v-slot:icon>
               <img
                 src="@/assets/svg/sale-01.svg"
@@ -61,6 +66,143 @@
             </template>
             <template v-slot:body> Активировать промокод </template>
           </SidebarListItem>
+          <v-dialog class="promo" v-model="promoactiveDialog">
+            <v-card
+              class="modal-win__popup promo__popup"
+              style="border-radius: 12px"
+            >
+              <div class="modal-win__popup-body">
+                <div class="modal-win__popup-head">
+                  <div class="rounded-border">
+                    <svg
+                      width="16"
+                      height="17"
+                      viewBox="0 0 16 17"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M6.00001 6.50016H6.00668M10 10.5002H10.0067M10.6667 5.8335L5.33334 11.1668M14.6667 8.50016C14.6667 12.1821 11.6819 15.1668 8.00001 15.1668C4.31811 15.1668 1.33334 12.1821 1.33334 8.50016C1.33334 4.81826 4.31811 1.8335 8.00001 1.8335C11.6819 1.8335 14.6667 4.81826 14.6667 8.50016ZM6.33334 6.50016C6.33334 6.68426 6.18411 6.8335 6.00001 6.8335C5.81592 6.8335 5.66668 6.68426 5.66668 6.50016C5.66668 6.31607 5.81592 6.16683 6.00001 6.16683C6.18411 6.16683 6.33334 6.31607 6.33334 6.50016ZM10.3333 10.5002C10.3333 10.6843 10.1841 10.8335 10 10.8335C9.81592 10.8335 9.66668 10.6843 9.66668 10.5002C9.66668 10.3161 9.81592 10.1668 10 10.1668C10.1841 10.1668 10.3333 10.3161 10.3333 10.5002Z"
+                        stroke="#344054"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <svg
+                    @click="promoactiveDialog = !promoactiveDialog"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M18 6L6 18M6 6L18 18"
+                      stroke="#98A2B3"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <h3 class="title promo-title">Введите промокод</h3>
+                <div class="input">
+                  <input
+                    @input="checkingPromo"
+                    v-model="promoInputValue"
+                    class="rounded-border"
+                    placeholder="Введите промокод"
+                    :style="errorStatus ? 'border: 1px solid red;' : ''"
+                  />
+                  <svg
+                    v-if="errorStatus"
+                    class="error-decor"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.99998 5.3335V8.00016M7.99998 10.6668H8.00665M14.6666 8.00016C14.6666 11.6821 11.6819 14.6668 7.99998 14.6668C4.31808 14.6668 1.33331 11.6821 1.33331 8.00016C1.33331 4.31826 4.31808 1.3335 7.99998 1.3335C11.6819 1.3335 14.6666 4.31826 14.6666 8.00016Z"
+                      stroke="#F04438"
+                      stroke-width="1.33333"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span v-if="errorStatus" style="color: red; margin-top: 5px"
+                    >Такого промокода не существует</span
+                  >
+                </div>
+
+                <BlueBtn :disabled="errorStatus" @click="setConfirmDialog"
+                  >Активировать</BlueBtn
+                >
+              </div>
+            </v-card>
+          </v-dialog>
+          <v-dialog class="promo" v-model="activatedPromoStatus">
+            <v-card
+              class="modal-win__popup promo__popup"
+              style="border-radius: 12px"
+            >
+              <div class="modal-win__popup-body">
+                <div class="modal-win__popup-head">
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z"
+                      fill="#DCFAE6"
+                    />
+                    <path
+                      d="M19.5 24L22.5 27L28.5 21M34 24C34 29.5228 29.5228 34 24 34C18.4772 34 14 29.5228 14 24C14 18.4772 18.4772 14 24 14C29.5228 14 34 18.4772 34 24Z"
+                      stroke="#079455"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <svg
+                    @click="activatedPromoStatus = false"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M18 6L6 18M6 6L18 18"
+                      stroke="#98A2B3"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <h3 class="title" style="margin-bottom: 0">
+                  Промокод активирован!
+                </h3>
+                <span
+                  style="
+                    color: #475467;
+                    font-size: 15px;
+                    line-height: 20px;
+                    margin-bottom: 24px;
+                  "
+                  >Он автоматически применяется в корзине. <br />
+                  Приятных покупок!</span
+                >
+                <BlueBtn> Перейти в каталог </BlueBtn>
+              </div></v-card
+            >
+          </v-dialog>
         </div>
         <div class="sidebar-personal-cabinet">
           <h2 class="sidebar-title personal-cabinet__title">Личный кабинет</h2>
@@ -166,14 +308,31 @@ export default {
   },
   data() {
     return {
+      promoInputValue: "",
+      promoactiveDialog: false,
+      errorStatus: true,
       username: "Иван",
+      activatedPromoStatus: false,
       timeStamp: "Доброго времени суток",
       balance: 399,
+      promostatus: false,
     };
   },
+  emits: ["disableNavSidebar", "sendSidebarStatus"],
   methods: {
+    checkingPromo() {
+      if (this.promoInputValue == "PROMO") {
+        this.errorStatus = false;
+      } else {
+        this.errorStatus = true;
+      }
+    },
     sendNavSidebarStatus() {
       this.$emit("disable-nav-sidebar", false);
+    },
+    setConfirmDialog() {
+      this.promoactiveDialog = !this.promoactiveDialog;
+      this.activatedPromoStatus = true;
     },
     setWelcome() {
       const currentTime = new Date().getHours();

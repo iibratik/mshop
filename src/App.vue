@@ -1,5 +1,6 @@
 <template>
   <v-app id="app">
+    
     <Header @sendSidebarStatus="setSidebarStatus" />
     <router-view v-if="!sidebarStatus" />
     <Footer />

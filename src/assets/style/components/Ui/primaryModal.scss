@@ -1,0 +1,40 @@
+.modal-win__popup {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.promo__popup {
+    & .modal-win__popup {
+        &-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        &-body {
+            .input {
+                width: 100%;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 24px;
+                .error-decor {
+                    position: absolute;
+                    right: 15px;
+                    top: 50%;
+                    transform: translateY(-120%);
+                }
+            }
+            & .promo {
+                &-title {
+                    margin-top: 12px;
+                    margin-bottom: 12px;
+                }
+            }
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
