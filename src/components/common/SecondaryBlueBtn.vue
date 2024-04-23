@@ -21,7 +21,6 @@ export default {};
 
 <style lang="scss">
 .secondary-blue-btn {
-
   font-weight: 600;
   font-size: 14px;
   line-height: 143%;

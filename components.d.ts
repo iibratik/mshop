@@ -23,5 +23,6 @@ declare module 'vue' {
     Searchinput: typeof import('./src/components/Searchinput.vue')['default']
     SecondaryBlueBtn: typeof import('./src/components/common/SecondaryBlueBtn.vue')['default']
     SidebarListItem: typeof import('./src/components/common/SidebarListItem.vue')['default']
+    WhiteBtn: typeof import('./src/components/common/WhiteBtn.vue')['default']
   }
 }

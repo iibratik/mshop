@@ -6,15 +6,7 @@
     :slidesPerView="1.5"
     class="mySwiper main-slider__content"
   >
-    <swiper-slide class="main-slider__slide"></swiper-slide>
-    <swiper-slide class="main-slider__slide"></swiper-slide>
-    <swiper-slide class="main-slider__slide"></swiper-slide>
-    <swiper-slide class="main-slider__slide"></swiper-slide>
-    <swiper-slide class="main-slider__slide"></swiper-slide>
-    <swiper-slide class="main-slider__slide"></swiper-slide>
-    <swiper-slide class="main-slider__slide"></swiper-slide>
-    <swiper-slide class="main-slider__slide"></swiper-slide>
-    <swiper-slide class="main-slider__slide"></swiper-slide>
+    <swiper-slide class="main-slider__slide" v-for="(item, index) in 6" :key="index"></swiper-slide>
   </swiper>
 </template>
 <script>
