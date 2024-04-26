@@ -64,6 +64,7 @@ const socials = ref([
 
 <style lang="scss" scoped>
     .footer {
+        margin-top: 32px;
         background: rgb(249, 250, 251);
         &__wrapper {
             padding: 48px 16px;

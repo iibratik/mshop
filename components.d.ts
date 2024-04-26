@@ -8,6 +8,8 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppBreadcrumbs: typeof import('./src/components/common/AppBreadcrumbs.vue')['default']
+    AppTab: typeof import('./src/components/common/AppTab.vue')['default']
+    AppTabs: typeof import('./src/components/common/AppTabs.vue')['default']
     BlueBtn: typeof import('./src/components/common/BlueBtn.vue')['default']
     Categories: typeof import('./src/components/Categories.vue')['default']
     Footer: typeof import('./src/components/layouts/Footer.vue')['default']
@@ -16,6 +18,7 @@ declare module 'vue' {
     MainSlider: typeof import('./src/components/MainSlider.vue')['default']
     Navigation: typeof import('./src/components/Navigation/navigation.vue')['default']
     NavigationSidebar: typeof import('./src/components/Navigation/navigationSidebar.vue')['default']
+    NoData: typeof import('./src/components/NoData.vue')['default']
     ProductCard: typeof import('./src/components/ProductCard.vue')['default']
     ProductCards: typeof import('./src/components/ProductCards.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
